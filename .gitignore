@@ -1,0 +1,15 @@
+# Pycharm files
+.idea
+
+# egg-info files
+*.egg-info/
+*.egg-info
+
+# Pycache files
+*.pyc
+*.pytest_cashe/
+
+# Visualisations
+*.png
+*.mp4
+*.gif

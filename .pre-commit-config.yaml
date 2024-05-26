@@ -1,0 +1,50 @@
+default_install_hook_types: [pre-commit, pre-merge-commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Reject commits that add large files (coverage.xml, for example)
+      # Consider adjusting kB limit
+      - id: check-added-large-files
+        args: [--enforce-all, --maxkb=5000]
+      # Check valid Python syntax
+      - id: check-ast
+      # Require literal syntax when initializing empty or zero python builtin types
+      - id: check-builtin-literals
+      # Check for files that would conflict in case-insensitive filesystems
+      - id: check-case-conflict
+      # Check for files that contain merge conflict strings
+      - id: check-merge-conflict
+      # Check TOML files for parseable syntax
+      - id: check-toml
+      # Check YAML files for parseable syntax
+      - id: check-yaml
+      # Files must end in a single newline
+      - id: end-of-file-fixer
+      # Remove whitespace at the end of lines
+      - id: trailing-whitespace
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      # Place isort options in pyproject.toml
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      # Change to black-jupyter if using Jupyter notebooks
+      - id: black
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: [--disable=import-error]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.0
+    hooks:
+      - id: mypy
+        language: system
+        pass_filenames: false
+        args: [ '.' ]

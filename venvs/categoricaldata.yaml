@@ -1,0 +1,12 @@
+name: categoricaldata
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - black
+  - isort
+  - pre-commit
+  - pytest
+  - pylint
+  - mypy
+  - jupyter
